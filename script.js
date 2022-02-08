@@ -1,3 +1,5 @@
+// first of all calling all the needed HTML elements by getElementByID and declare them as const 
+// make please ya mohamed a proper names 
 const quoteContainer = document.getElementById('quote-container');
 const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
@@ -11,7 +13,7 @@ function loading() {
     quoteContainer.hidden = true;
 }
 
-// Hide Loading
+// Hide Loading لودينق 
 function complete() {
     if (!loader.hidden) {
         quoteContainer.hidden = false;
@@ -19,7 +21,7 @@ function complete() {
     }
 }
 
-// Get Quote From API
+// Get Quote From API 
 async function getQuote() {
     loading();
     const proxyUrl = 'https://whispering-tor-04671.herokuapp.com/'
@@ -27,13 +29,13 @@ async function getQuote() {
     try {
         const response = await fetch(proxyUrl + apiUrl);
         const data = await response.json();
-        // If Author is blank, add 'Unknown'
+        // If Author is blank, add 'Unknown' لان مرات يكون مفيش
         if (data.quoteAuthor === '') {
             authorText.innerText = 'Unknown';
         } else {
             authorText.innerText = data.quoteAuthor;
         }
-        // Reduce font size for long quotes
+        // Reduce font size for long quotes في حالـة طويلة
         if (data.quoteText.length > 120) {
             quoteText.classList.add('long-quote');
         } else {
@@ -47,7 +49,7 @@ async function getQuote() {
     }
 }
 
-// Tweet Quote
+// Tweet Quote مرات نبي نغردها
 function tweetQuote() {
     const quote = quoteText.innerText;
     const author = authorText.innerText;
@@ -55,7 +57,7 @@ function tweetQuote() {
     window.open(twitterUrl, '_blank');
 }
 
-// Event Listeners
+// Event Listeners هذينا البطم الخاصة بال
 newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 
